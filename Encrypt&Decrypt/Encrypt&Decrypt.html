@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="des.js"></script>
+		<script src="base64.js"></script>
+	</head>
+
+	<body>
+		<div>
+			<label>输入</label>
+			<input id="inputValue" type="text" width="200px" value="This is a test message" />
+			<label>key</label>
+			<input id="inputKey" type="text" width="200px" value="this is a 24 byte key !!" />
+			
+		</div>
+		<div>
+			<input type="button" value="加密" onclick="Encrypt()" />
+			<textarea id="outputLicense" wrap="logical" style="width:500px"></textarea>
+		</div>
+		<div>
+			<input type="button" value="解密" onclick="Decrypt()" />
+			<textarea id="outputValue" wrap="logical" style="width:500px"></textarea>
+		</div>
+	</body>
+
+	<script>
+		var base = new Base64();  
+		
+		function Encrypt() {
+			var key = inputKey.value;
+			var str = inputValue.value;  
+			var result_todes = strEnc(str, key, 2, 3);	//des加密
+			var result_tobase = base.encode(result_todes);  //base64加密
+			
+			outputLicense.value = result_tobase;
+		}
+
+		function Decrypt() {
+			var key = inputKey.value;
+			var result_frombase = base.decode(outputLicense.value);  //base64解密
+			var result_fromdes = strDec(result_frombase, key, 2, 3);	//des解密
+			outputValue.value = result_fromdes;
+		}
+	</script>
+
+</html>

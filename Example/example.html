@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="example.css" />
+		<title>小马地图在线测试工具</title>
+		<style type="text/css"></style>
+	</head>
+
+	<body id="editor">
+		<div id="wrapper">
+			<div id="header">
+				<h1>小马地图 TIY</h1>
+			</div>
+			<div id="butt">
+				<input type="button" value="提交代码" onClick="submitTryit()">
+			</div>
+			<div id="CodeArea">
+				<h2>编辑您的代码：</h2>
+				<textarea id="ta" wrap="logical">
+<!DOCTYPE html>
+<html>
+<body>
+<a href="http://www.w3school.com.cn">W3School</a>
+</body>
+</html>
+				</textarea>
+			</div>
+			<div id="result">
+				<h2>查看结果:</h2>
+				<iframe id="ifrCode" frameborder="0"></iframe>
+			</div>
+			<div id="footer">
+				<p>请在上面的文本框中编辑您的代码，然后单击提交按钮测试结果。</p>
+			</div>
+		</div>
+	</body>
+
+	<script>
+		var ta = document.getElementById('ta');
+		var	ifrCodeDoc = document.getElementById('ifrCode');
+		submitTryit();//初始化先加载
+
+		function submitTryit() {
+			ifrCodeDoc.contentWindow.document.open();
+			ifrCodeDoc.contentWindow.document.write(ta.value);
+			ifrCodeDoc.contentWindow.document.close();
+		}
+	</script>
+
+</html>
